@@ -6,6 +6,11 @@
         android:title="@string/home" />
 
     <item
+        android:id="@+id/nav_my_ticket"
+        android:icon="@drawable/ic_ticket_red"
+        android:title="@string/ticket" />
+
+    <item
         android:id="@+id/nav_scan_qr"
         android:icon="@drawable/ic_qrcode"
         android:title="@string/scanqr" />
