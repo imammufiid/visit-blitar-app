@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="10dp"
+    app:cardElevation="1dp"
     android:id="@+id/card_view_container"
     android:layout_marginStart="20dp">
 
@@ -34,7 +35,7 @@
             android:layout_marginTop="8dp"
             android:textSize="16sp"
             android:textColor="@color/colorPrimaryText"
-            android:textStyle="bold"/>
+            style="@style/TextViewTheme.Bold"/>
 
         <TextView
             android:id="@+id/address_tourist_attraction"
@@ -42,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="@string/address_tourist"
             android:layout_marginStart="10dp"
-            android:textColor="@color/colorPrimaryText"
+            android:textColor="@color/colorAccent"
             android:layout_marginBottom="12dp"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
