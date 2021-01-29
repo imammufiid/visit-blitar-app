@@ -35,4 +35,8 @@
         <item name="android:queryHint">"Cari Wisata yang kamu kunjungi..."</item>
     </style>
 
+    <style name="TextViewTheme.Bold" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/poppinssemibold</item>
+    </style>
+
 </resources>
