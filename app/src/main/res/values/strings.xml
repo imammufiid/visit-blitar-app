@@ -9,7 +9,7 @@
     <string name="address_tourist">Lokasi Wisata</string>
     <string name="name_tourist_attraction">Nama Wisata</string>
     <string name="ticket_reservation">Reservasi Tiket</string>
-    <string name="search_wisata">Telusuri...</string>
+    <string name="search_wisata">Telusuri Tempat Wisata Favoritmu...</string>
     <string name="htm_tourist_attraction">HTM : %s</string>
     <string name="capasity_tourist_attraction">Kapasitas : %s orang</string>
     <string name="visitors_tourist_attraction">Pengunjung : %s pengunjung</string>

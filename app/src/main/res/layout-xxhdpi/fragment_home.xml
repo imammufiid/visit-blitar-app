@@ -34,7 +34,7 @@
             android:layout_marginHorizontal="22dp"
             android:layout_marginTop="18dp"
             android:background="@drawable/shape_sv"
-            android:iconifiedByDefault="true"
+            android:iconifiedByDefault="false"
             android:queryBackground="@null"
             android:queryHint="@string/search_wisata"
             android:searchIcon="@drawable/ic_sv"
