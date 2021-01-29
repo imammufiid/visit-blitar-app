@@ -34,6 +34,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/name_tourist_attraction"
                 android:textStyle="bold"
+                android:ellipsize="end"
+                android:textSize="18sp"
                 android:textColor="@color/colorPrimaryText"/>
             <TextView
                 android:id="@+id/address_tourist_attraction"
