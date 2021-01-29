@@ -5,6 +5,15 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/poppinregular</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="fontFamily">@font/poppinregular</item>
     </style>
 
     <style name="BottomNavigation.ActiveItemTextAppearance" parent="TextAppearance.AppCompat">
@@ -18,6 +27,12 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="SearchViewTheme" parent="Widget.AppCompat.SearchView">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/poppinregular</item>
+        <item name="android:queryHint">"Cari Wisata yang kamu kunjungi..."</item>
     </style>
 
 </resources>
