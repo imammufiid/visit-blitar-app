@@ -22,7 +22,7 @@
             android:text="@string/find_tourist_attraction"
             android:textColor="@color/colorPrimaryText"
             android:textSize="32sp"
-            android:textStyle="bold" />
+            style="@style/TextViewTheme.Bold" />
 
         <SearchView
             android:id="@+id/sv_tourist_attraction"
