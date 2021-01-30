@@ -13,10 +13,11 @@
     <string name="htm_tourist_attraction">HTM : %s</string>
     <string name="capasity_tourist_attraction">Kapasitas : %s orang</string>
     <string name="visitors_tourist_attraction">Pengunjung : %s pengunjung</string>
-    <string name="description">description</string>
+    <string name="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque labore eligendi qui maxime accusamus reprehenderit earum iste, culpa eveniet veritatis placeat impedit, harum obcaecati saepe. Vel minus esse quo similique!</string>
     <string name="send_reservation">Pesan Tiket Anda</string>
     <string name="price_total_ticket">Total Harga</string>
-    <string name="price">Rp. 0</string>
+    <string name="rupiah">Rp. %s</string>
+    <string name="price">Harga Tiket</string>
     <string name="harga_tiket">Harga Tiket : %s</string>
     <string name="login">Masuk</string>
     <string name="password">Password</string>
@@ -37,4 +38,5 @@
     <string name="datang">Datang</string>
     <string name="find_tourist_attraction">Cari \nTempat Wisata!</string>
     <string name="recommended_for_you">Rekomendasi untuk Anda</string>
+    <string name="description_title">Deskripsi</string>
 </resources>
