@@ -11,24 +11,39 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/layout_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
+            android:orientation="horizontal"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
-            android:text="@string/find_tourist_attraction"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="32sp"
-            style="@style/TextViewTheme.Bold" />
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/find_tourist_attraction"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="32sp"
+                style="@style/TextViewTheme.Bold" />
+
+            <ImageView
+                android:id="@+id/ic_profile"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_profile_picture"/>
+        </LinearLayout>
 
         <SearchView
             android:id="@+id/sv_tourist_attraction"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_below="@id/title"
+            android:layout_below="@id/layout_title"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginHorizontal="22dp"
