@@ -46,6 +46,12 @@ class TouristRecommendedAdapter(val data: List<TourismEntity>?): RecyclerView.Ad
                     }
                     itemView.context.startActivity(intent)
                 }
+                container.setOnClickListener {
+                    val intent = Intent(itemView.context, DetailActivity::class.java).apply {
+                        putExtra(DetailActivity.EXTRAS_WISATA, wisata)
+                    }
+                    itemView.context.startActivity(intent)
+                }
 
             }
         }
