@@ -1,17 +1,21 @@
 package com.mufiid.visitblitar.ui.detail
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.mufiid.visitblitar.R
 import com.mufiid.visitblitar.data.source.local.entity.TourismEntity
 import com.mufiid.visitblitar.databinding.ActivityDetailBinding
+import com.mufiid.visitblitar.ui.addreservation.AddReservationActivity
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-class DetailActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityDetailBinding
+class DetailActivity : AppCompatActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityDetailBinding
+    private var tourismEntity: TourismEntity? = null
 
     companion object {
         const val EXTRAS_WISATA = "extras_wisata"
@@ -23,21 +27,28 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        val data = intent.getParcelableExtra<TourismEntity>(EXTRAS_WISATA)
+        init()
 
-        if (data != null) {
-            binding.nameTourist.text = data.nameTouristAttraction
-            binding.addressTourist.text = data.address
-            binding.descriptionTourist.text = data.description
-            binding.priceTicket.text = generateRupiah(data.priceTicket.toString())
+
+    }
+
+    private fun init() {
+        binding.buttonBack.setOnClickListener(this)
+        binding.buttonReservation.setOnClickListener(this)
+        tourismEntity = intent.getParcelableExtra(EXTRAS_WISATA)
+        setParcelable()
+    }
+
+    private fun setParcelable() {
+        tourismEntity?.let {
+            binding.nameTourist.text = it.nameTouristAttraction
+            binding.addressTourist.text = it.address
+            binding.descriptionTourist.text = it.description
+            binding.priceTicket.text = generateRupiah(it.priceTicket.toString())
             Glide.with(this)
-                .load(data.image)
+                .load(it.image)
                 .error(R.drawable.ic_image_error)
                 .into(binding.imageTourist)
-        }
-
-        binding.buttonBack.setOnClickListener {
-            finish()
         }
     }
 
@@ -48,5 +59,17 @@ class DetailActivity : AppCompatActivity() {
         cursIndonesian.positivePrefix = symbol
 
         return cursIndonesian.format(nominal.toDouble())
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.button_back -> finish()
+            R.id.button_reservation -> {
+                startActivity(Intent(this, AddReservationActivity::class.java).apply {
+                    putExtra(AddReservationActivity.EXTRA_WISATA, tourismEntity)
+                })
+                finish()
+            }
+        }
     }
 }
