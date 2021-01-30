@@ -30,7 +30,7 @@
     <string name="please_wait">Please Wait...</string>
     <string name="ticket">Tiket</string>
     <string name="total_visitor">Jumlah : %s orang</string>
-    <string name="status_is_coming">Status Datang : %s</string>
+    <string name="status_is_coming">Status : %s</string>
     <string name="date">Tanggal : %s</string>
     <string name="yet_coming">Belum Datang</string>
     <string name="have_arrived">Sudah Datang</string>
@@ -41,4 +41,10 @@
     <string name="description_title">Deskripsi</string>
     <string name="reservation_now">Reservasi\nTempat Wisata!</string>
     <string name="search_reservation">Cari Wisata dan Reservasi Sekarang</string>
+    <string name="my_ticket">Tiket\nReservasi</string>
+    <string name="nama">Nama</string>
+    <string name="no_telp">No. Telp</string>
+    <string name="nik">NIK</string>
+    <string name="total_visitor_text">Total Pengunjung</string>
+    <string name="goodbye">Pulang</string>
 </resources>
