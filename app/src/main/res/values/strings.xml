@@ -39,4 +39,6 @@
     <string name="find_tourist_attraction">Cari \nTempat Wisata!</string>
     <string name="recommended_for_you">Rekomendasi untuk Anda</string>
     <string name="description_title">Deskripsi</string>
+    <string name="reservation_now">Reservasi\nTempat Wisata!</string>
+    <string name="search_reservation">Cari Wisata dan Reservasi Sekarang</string>
 </resources>

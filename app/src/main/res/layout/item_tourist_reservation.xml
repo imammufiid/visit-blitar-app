@@ -10,6 +10,7 @@
         android:id="@+id/image_tourist"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_gravity="center_vertical"
         android:src="@drawable/ic_image_error"/>
 
     <LinearLayout
@@ -24,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/name_tourist_attraction"
-            android:textStyle="bold"
+            style="@style/TextViewTheme.Bold"
             android:textColor="@color/colorPrimaryText" />
         <TextView
             android:id="@+id/htm"
@@ -43,6 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/visitors_tourist_attraction"
+            android:textStyle="bold"
             android:textColor="@color/colorPrimary" />
     </LinearLayout>
 
