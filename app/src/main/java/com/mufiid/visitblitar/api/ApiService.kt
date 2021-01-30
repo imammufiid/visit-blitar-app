@@ -50,12 +50,6 @@ interface ApiService {
     @GET("/tourism/categories")
     fun getListOfTourismCategory(): Observable<WrappedListResponses<TourismCategoryEntity>>
 
-    // GET
-    @GET("/tourism/search")
-    fun getListOfTourismBySearch(
-        @Query("query") query: String
-    ): Observable<WrappedListResponses<TourismEntity>>
-
     // Add Reservation
     @FormUrlEncoded
     @POST("/reservation/")
