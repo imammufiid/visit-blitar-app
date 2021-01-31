@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.reservation.ReservationFragment">
 
@@ -41,6 +42,22 @@
         android:queryHint="@string/search_reservation"
         android:searchIcon="@drawable/ic_sv"
         android:theme="@style/SearchViewTheme" />
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_reservation_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        shimmer:duration="800"
+        android:layout_below="@id/sv_tourist_attraction"
+        android:layout_marginTop="20dp"
+        android:visibility="gone">
+
+        <include
+            android:id="@+id/shimmer_home"
+            layout="@layout/shimmer_reservation_page" />
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_wisata_reservation"
