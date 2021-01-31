@@ -63,7 +63,6 @@
             shimmer:duration="800"
             android:layout_below="@id/sv_tourist_attraction"
             android:layout_marginTop="20dp"
-            android:layout_marginHorizontal="16dp"
             android:visibility="gone">
 
             <include
