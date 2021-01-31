@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:src="@color/colorDarkGrey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="200dp"
+                android:layout_height="12dp"
+                android:backgroundTint="@color/colorDarkGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorDarkGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorDarkGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="120dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorDarkGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:src="@color/colorDarkGrey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="200dp"
+                android:layout_height="12dp"
+                android:backgroundTint="@color/colorDarkGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorDarkGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorDarkGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="120dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorDarkGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical"
+            android:src="@color/colorDarkGrey" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="200dp"
+                android:layout_height="12dp"
+                android:backgroundTint="@color/colorDarkGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="170dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorDarkGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="100dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorDarkGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="120dp"
+                android:layout_height="12dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/colorDarkGrey"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
