@@ -47,4 +47,10 @@
     <string name="nik">NIK</string>
     <string name="total_visitor_text">Total Pengunjung</string>
     <string name="goodbye">Pulang</string>
+    <string name="title">Title</string>
+    <string name="message_dialog">Message Dialog</string>
+    <string name="to_login_page">Ke Halaman Login</string>
+    <string name="back">Kembali</string>
+    <string name="warning">Pemberitahuan</string>
+    <string name="please_login">Silahkan login terlebih dahulu!</string>
 </resources>
