@@ -11,6 +11,8 @@ import androidx.fragment.app.DialogFragment
 import com.mufiid.visitblitar.R
 import com.mufiid.visitblitar.databinding.FragmentProfileDialogBinding
 import com.mufiid.visitblitar.ui.home.HomeFragment
+import com.mufiid.visitblitar.utils.pref.AuthPref
+import com.mufiid.visitblitar.utils.pref.UserPref
 
 class ProfileDialogFragment : DialogFragment(), View.OnClickListener {
     private lateinit var binding: FragmentProfileDialogBinding
@@ -30,6 +32,10 @@ class ProfileDialogFragment : DialogFragment(), View.OnClickListener {
 
         binding.buttonLogout.setOnClickListener(this)
         binding.titleDialog.text = getString(R.string.hay_username, "Kawan")
+
+        if (context?.let { AuthPref.isLoggedIn(it) } == true) {
+            binding.buttonLogout.visibility = View.GONE
+        }
     }
 
     override fun onResume() {
