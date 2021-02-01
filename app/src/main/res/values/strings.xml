@@ -53,4 +53,6 @@
     <string name="back">Kembali</string>
     <string name="warning">Pemberitahuan</string>
     <string name="please_login">Silahkan login terlebih dahulu!</string>
+    <string name="logout">Keluar</string>
+    <string name="hay_username">Halo, %s</string>
 </resources>
