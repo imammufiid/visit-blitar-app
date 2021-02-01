@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.fragment.app.DialogFragment
 import com.mufiid.visitblitar.R
 import com.mufiid.visitblitar.databinding.FragmentDialogMessageBinding
@@ -33,6 +34,13 @@ class DialogMessageFragment : DialogFragment(), View.OnClickListener {
         binding.btnToLoginPage.setOnClickListener(this)
         binding.btnBack.setOnClickListener(this)
         dialog?.setCanceledOnTouchOutside(false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val params = dialog?.window?.attributes
+        params?.width = WindowManager.LayoutParams.MATCH_PARENT
+        dialog?.window?.attributes = params
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
