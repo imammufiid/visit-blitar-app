@@ -10,11 +10,12 @@
 
     <TextView
         android:id="@+id/title_message"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title"
         android:textStyle="bold"
         style="@style/TextViewTheme.Bold"
+        android:layout_gravity="center_horizontal"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"/>
 
@@ -31,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:padding="16dp"
         android:background="@drawable/background_button_rounded"
         android:textColor="@color/colorWhite"
