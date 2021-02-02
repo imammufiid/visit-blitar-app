@@ -29,11 +29,17 @@ class ProfileDialogFragment : DialogFragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonLogout.setOnClickListener(this)
+        binding.buttonLogin.setOnClickListener(this)
         binding.titleDialog.text = getString(R.string.hay_username, "Kawan")
 
         if (context?.let { AuthPref.isLoggedIn(it) } == false) {
             binding.buttonLogout.visibility = View.GONE
+            binding.buttonLogin.visibility = View.VISIBLE
+        } else {
+            binding.buttonLogout.visibility = View.VISIBLE
+            binding.buttonLogin.visibility = View.GONE
         }
+
     }
 
     override fun onResume() {
@@ -69,6 +75,12 @@ class ProfileDialogFragment : DialogFragment(), View.OnClickListener {
                 }
                 dialog?.dismiss()
             }
+            R.id.button_login -> {
+                if (buttonListener != null) {
+                    buttonListener?.login()
+                }
+                dialog?.dismiss()
+            }
         }
     }
 
@@ -83,5 +95,6 @@ class ProfileDialogFragment : DialogFragment(), View.OnClickListener {
 
     interface ButtonListener {
         fun logout()
+        fun login()
     }
 }

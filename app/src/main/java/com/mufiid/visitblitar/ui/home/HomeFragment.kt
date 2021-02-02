@@ -1,5 +1,6 @@
 package com.mufiid.visitblitar.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.mufiid.visitblitar.R
 import com.mufiid.visitblitar.data.source.local.entity.TourismEntity
 import com.mufiid.visitblitar.databinding.FragmentHomeBinding
+import com.mufiid.visitblitar.ui.login.LoginActivity
 import com.mufiid.visitblitar.ui.profiledialog.ProfileDialogFragment
 import com.mufiid.visitblitar.utils.pref.AuthPref
 import com.mufiid.visitblitar.utils.pref.PrefCore
@@ -104,6 +106,12 @@ class HomeFragment : Fragment(), WisataView, View.OnClickListener {
                     PrefCore.clearPrefAuth(it)
                 }
 
+            }
+
+            override fun login() {
+                startActivity(Intent(context, LoginActivity::class.java).apply {
+                    putExtra(LoginActivity.CHECK_LOGIN, true)
+                })
             }
         }
 

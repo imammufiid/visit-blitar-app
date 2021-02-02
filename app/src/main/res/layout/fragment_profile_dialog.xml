@@ -19,6 +19,17 @@
         android:text="@string/hay_username" />
 
     <Button
+        android:id="@+id/button_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:padding="16dp"
+        android:background="@drawable/background_button_rounded"
+        android:layout_marginTop="40dp"
+        android:textColor="@color/colorWhite"
+        android:text="@string/login" />
+
+    <Button
         android:id="@+id/button_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
