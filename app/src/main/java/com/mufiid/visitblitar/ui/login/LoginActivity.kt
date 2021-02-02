@@ -1,6 +1,5 @@
 package com.mufiid.visitblitar.ui.login
 
-import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +19,6 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
     private lateinit var binding: ActivityLoginBinding
     private var presenter: LoginPresenter? = null
-    private var loading: ProgressDialog? = null
 
     companion object {
         const val CHECK_LOGIN = "check_login"
@@ -45,7 +43,6 @@ class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
     private fun init() {
         CompositeDisposable().clear()
         presenter = LoginPresenter(this)
-        loading = ProgressDialog(this)
 
         binding.btnLogin.setOnClickListener(this)
         binding.btnRegistration.setOnClickListener(this)
@@ -74,14 +71,11 @@ class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
 
     override fun loading(state: Boolean) {
         if (state) {
-            loading?.let {
-                it.setMessage(getString(R.string.please_wait))
-                it.show()
-            }
+            binding.layoutButton.visibility = View.GONE
+            binding.progressBarLogin.visibility = View.VISIBLE
         } else {
-            loading?.let {
-                it.dismiss()
-            }
+            binding.layoutButton.visibility = View.VISIBLE
+            binding.progressBarLogin.visibility = View.GONE
         }
     }
 

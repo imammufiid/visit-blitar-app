@@ -1,6 +1,5 @@
 package com.mufiid.visitblitar.ui.registration
 
-import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -17,7 +16,6 @@ import io.reactivex.rxjava3.disposables.CompositeDisposable
 class RegistrationActivity : AppCompatActivity(), RegistrationView, View.OnClickListener {
     private lateinit var binding: ActivityRegistrationBinding
     private var presenter: RegistrationPresenter? = null
-    private var loading: ProgressDialog? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
@@ -29,7 +27,6 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, View.OnClick
     private fun init() {
         CompositeDisposable().clear()
         presenter = RegistrationPresenter(this)
-        loading = ProgressDialog(this)
         binding.btnRegister.setOnClickListener(this)
     }
 
@@ -48,14 +45,11 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, View.OnClick
 
     override fun loading(state: Boolean) {
         if (state) {
-            loading?.let {
-                it.setMessage(getString(R.string.please_wait))
-                it.show()
-            }
+            binding.layoutButton.visibility = View.GONE
+            binding.progressBarRegister.visibility = View.VISIBLE
         } else {
-            loading?.let {
-                it.dismiss()
-            }
+            binding.layoutButton.visibility = View.VISIBLE
+            binding.progressBarRegister.visibility = View.GONE
         }
 
     }
