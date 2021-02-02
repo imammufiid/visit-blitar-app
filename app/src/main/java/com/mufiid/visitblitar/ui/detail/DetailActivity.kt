@@ -1,6 +1,7 @@
 package com.mufiid.visitblitar.ui.detail
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,9 @@ import java.util.*
 class DetailActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityDetailBinding
     private var tourismEntity: TourismEntity? = null
+    private var latitude: String? = null
+    private var longitude: String? = null
+    private var nameTourism: String? = null
 
     companion object {
         const val EXTRAS_WISATA = "extras_wisata"
@@ -28,13 +32,12 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar?.hide()
 
         init()
-
-
     }
 
     private fun init() {
         binding.buttonBack.setOnClickListener(this)
         binding.buttonReservation.setOnClickListener(this)
+        binding.icMap.setOnClickListener(this)
         tourismEntity = intent.getParcelableExtra(EXTRAS_WISATA)
         setParcelable()
     }
@@ -49,6 +52,11 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
                 .load(it.image)
                 .error(R.drawable.ic_image_error)
                 .into(binding.imageTourist)
+
+            nameTourism = it.nameTouristAttraction
+            latitude = it.latitude
+            longitude = it.longitude
+
         }
     }
 
@@ -69,6 +77,14 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
                     putExtra(AddReservationActivity.EXTRA_WISATA, tourismEntity)
                 })
                 finish()
+            }
+            R.id.ic_map -> {
+                val gmmIntentUri = Uri.parse("geo:${latitude},${longitude}?q=$nameTourism")
+                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri).apply {
+                    setPackage("com.google.android.apps.maps")
+                    resolveActivity(packageManager)
+                }
+                startActivity(mapIntent)
             }
         }
     }
