@@ -3,6 +3,7 @@ package com.mufiid.visitblitar.data.source.local
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import com.mufiid.visitblitar.data.source.local.entity.TicketEntity
+import com.mufiid.visitblitar.data.source.local.entity.TourismEntity
 import com.mufiid.visitblitar.data.source.local.room.dao.TicketDao
 import com.mufiid.visitblitar.data.source.local.room.dao.TourismDao
 
@@ -21,4 +22,8 @@ class LocalDataSource private constructor(
     // ticket entity
     fun getAllTicketByUser(userId: Int?): DataSource.Factory<Int, TicketEntity> = mTicketDao.getAllTicketByUser(userId)
     fun getTicketById(ticketId: Int?) : LiveData<TicketEntity> = mTicketDao.getTicketById(ticketId)
+
+    // tourism entity
+    fun getAllTourism(): DataSource.Factory<Int, TourismEntity> = mTourismDao.getTourism()
+    fun getTourismById(tourismId: Int?): LiveData<TourismEntity> = mTourismDao.getTourismById(tourismId)
 }
