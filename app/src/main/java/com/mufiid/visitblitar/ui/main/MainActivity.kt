@@ -15,9 +15,7 @@ import com.mufiid.visitblitar.R
 import com.mufiid.visitblitar.databinding.ActivityMainBinding
 import com.mufiid.visitblitar.ui.home.HomeFragment
 import com.mufiid.visitblitar.ui.reservation.ReservationFragment
-import com.mufiid.visitblitar.ui.scanqr.ScanQrActivity
 import com.mufiid.visitblitar.ui.ticket.TicketFragment
-import com.mufiid.visitblitar.utils.pref.AuthPref
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityMainBinding
@@ -64,6 +62,13 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         return false
     }
 
+    private fun loadFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.frame_layout, fragment, fragment.javaClass.simpleName)
+            .commit()
+    }
+
     override fun onBackPressed() {
         if (doubleBack) {
             super.onBackPressed()
@@ -75,13 +80,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         Handler(mainLooper).postDelayed({
             doubleBack = false
         }, 2000)
-    }
-
-    private fun loadFragment(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.frame_layout, fragment, fragment.javaClass.simpleName)
-            .commit()
     }
 
     private fun checkPermission() {
