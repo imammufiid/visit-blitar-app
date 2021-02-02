@@ -2,7 +2,6 @@ package com.mufiid.visitblitar.ui.profiledialog
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import com.mufiid.visitblitar.R
 import com.mufiid.visitblitar.databinding.FragmentProfileDialogBinding
 import com.mufiid.visitblitar.ui.home.HomeFragment
 import com.mufiid.visitblitar.utils.pref.AuthPref
-import com.mufiid.visitblitar.utils.pref.UserPref
 
 class ProfileDialogFragment : DialogFragment(), View.OnClickListener {
     private lateinit var binding: FragmentProfileDialogBinding
@@ -33,7 +31,7 @@ class ProfileDialogFragment : DialogFragment(), View.OnClickListener {
         binding.buttonLogout.setOnClickListener(this)
         binding.titleDialog.text = getString(R.string.hay_username, "Kawan")
 
-        if (context?.let { AuthPref.isLoggedIn(it) } == true) {
+        if (context?.let { AuthPref.isLoggedIn(it) } == false) {
             binding.buttonLogout.visibility = View.GONE
         }
     }
@@ -76,7 +74,7 @@ class ProfileDialogFragment : DialogFragment(), View.OnClickListener {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        val fragment = Fragment()
+        val fragment = parentFragment
 
         if (fragment is HomeFragment) {
             this.buttonListener = fragment.buttonListener
