@@ -50,11 +50,17 @@ class TicketFragment : Fragment(), TicketView {
     }
 
     override fun getDataMyTicket(message: String?, data: List<TicketEntity>?) {
-        binding.rvMyTicket.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(context)
-            adapter = TicketAdapter(data)
+
+        if (data.isNullOrEmpty()) {
+            binding.layoutEmpty.visibility = View.VISIBLE
+        } else {
+            binding.rvMyTicket.apply {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(context)
+                adapter = TicketAdapter(data)
+            }
         }
+
     }
 
     override fun failedGetDataMyTicket(message: String?) {
