@@ -13,10 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="28dp"
         android:text="@string/register_account"
         android:textColor="@color/colorPrimaryText"
         android:textSize="30sp"
+        android:layout_marginTop="20dp"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -58,6 +58,8 @@
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:maxLines="1"
+                        android:focusable="false"
+                        android:focusableInTouchMode="true"
                         android:textStyle="bold" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -86,6 +88,8 @@
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:maxLines="1"
+                        android:focusable="false"
+                        android:focusableInTouchMode="true"
                         android:textStyle="bold" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -110,6 +114,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:maxLines="1"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,6 +137,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -153,6 +161,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:maxLines="1"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -175,6 +185,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:maxLines="1"
+                android:focusable="false"
+                android:focusableInTouchMode="true"
                 android:textStyle="bold" />
         </com.google.android.material.textfield.TextInputLayout>
 
