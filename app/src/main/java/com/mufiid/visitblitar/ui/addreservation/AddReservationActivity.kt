@@ -25,7 +25,6 @@ import java.util.*
 class AddReservationActivity : AppCompatActivity(), AddReservationView, View.OnClickListener, DatePickerDialog.OnDateSetListener{
     private lateinit var binding: ActivityAddReservationBinding
     private lateinit var presenter: AddReservationPresenter
-    private lateinit var loading: ProgressDialog
     private var priceTicket: Int? = 0
     private var totalPrice: Int? = 0
     private var tourismId: Int? = 0
@@ -82,7 +81,6 @@ class AddReservationActivity : AppCompatActivity(), AddReservationView, View.OnC
 
     private fun init() {
         presenter = AddReservationPresenter(this)
-        loading = ProgressDialog(this)
         binding.btnReservation.setOnClickListener(this)
 
         binding.totalPrice.text = getString(R.string.rupiah, "0")
@@ -117,18 +115,16 @@ class AddReservationActivity : AppCompatActivity(), AddReservationView, View.OnC
 
     override fun messageAddReservation(message: String?) {
         showToast(message)
+        binding.btnReservation.visibility = View.VISIBLE
     }
 
     override fun loading(state: Boolean) {
         if (state) {
-            loading?.let {
-                it.setMessage(getString(R.string.please_wait))
-                it.show()
-            }
+            binding.btnReservation.visibility = View.GONE
+            binding.progressBarAddReservation.visibility = View.VISIBLE
         } else {
-            loading?.let {
-                it.dismiss()
-            }
+            binding.btnReservation.visibility = View.VISIBLE
+            binding.progressBarAddReservation.visibility = View.GONE
         }
     }
 

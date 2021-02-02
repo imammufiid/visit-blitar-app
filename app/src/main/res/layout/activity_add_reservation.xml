@@ -247,5 +247,13 @@
             android:padding="24dp"
             android:text="@string/send_reservation"
             android:textColor="@color/colorWhite" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar_add_reservation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"/>
     </LinearLayout>
 </ScrollView>
