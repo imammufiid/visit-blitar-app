@@ -101,7 +101,6 @@ class HomeFragment : Fragment(), WisataView, View.OnClickListener {
         object : ProfileDialogFragment.ButtonListener {
             override fun logout() {
                 context?.let {
-                    AuthPref.setIsLoggedIn(it, false)
                     PrefCore.clearPrefAuth(it)
                 }
 
