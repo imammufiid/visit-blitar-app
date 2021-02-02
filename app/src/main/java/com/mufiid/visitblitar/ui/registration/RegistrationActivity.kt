@@ -41,6 +41,7 @@ class RegistrationActivity : AppCompatActivity(), RegistrationView, View.OnClick
 
     override fun failedRegistration(message: String?) {
         showToast(message)
+        binding.layoutButton.visibility = View.VISIBLE
     }
 
     override fun loading(state: Boolean) {

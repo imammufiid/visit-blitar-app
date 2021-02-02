@@ -67,6 +67,7 @@ class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
 
     override fun failedLogin(message: String?) {
         showToast(message)
+        binding.layoutButton.visibility = View.VISIBLE
     }
 
     override fun loading(state: Boolean) {
