@@ -63,7 +63,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="text"
                             android:maxLines="1"
-                            android:focusable="false"
+                            android:focusable="true"
                             android:focusableInTouchMode="true"
                             android:textStyle="bold" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -94,7 +94,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="text"
                             android:maxLines="1"
-                            android:focusable="false"
+                            android:focusable="true"
                             android:focusableInTouchMode="true"
                             android:textStyle="bold" />
                     </com.google.android.material.textfield.TextInputLayout>
@@ -121,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:focusable="false"
+                    android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:textStyle="bold" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -145,7 +145,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:focusable="false"
+                    android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:textStyle="bold" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -170,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:focusable="false"
+                    android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:textStyle="bold" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -195,7 +195,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:maxLines="1"
-                    android:focusable="false"
+                    android:focusable="true"
                     android:focusableInTouchMode="true"
                     android:textStyle="bold" />
             </com.google.android.material.textfield.TextInputLayout>
