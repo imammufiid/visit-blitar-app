@@ -13,7 +13,7 @@ import retrofit2.http.*
 interface ApiService {
     // LOGIN
     @FormUrlEncoded
-    @POST("auth/login")
+    @POST("public/auth/login")
     fun login(
         @Field("username") username: String?,
         @Field("password") password: String?
@@ -21,7 +21,7 @@ interface ApiService {
 
     // REGISTRATION
     @FormUrlEncoded
-    @POST("auth/register")
+    @POST("public/auth/register")
     fun register(
         @Field("username") username: String?,
         @Field("firstname") firstName: String?,
@@ -32,14 +32,14 @@ interface ApiService {
 
     // REGISTRATION
     @FormUrlEncoded
-    @POST("reservation/isComing")
+    @POST("public/reservation/isComing")
     fun isComing(
         @Field("user_id") userId: Int?,
         @Field("code_reservation") codeReservation: String?,
     ): Observable<MessageResponse>
 
     // GET
-    @GET("/tourism/all")
+    @GET("public/tourism/all")
     fun getListOfTouristAttraction(
         @Query("query") query: String? = null,
         @Query("recommended") recommended: Int? = null,
@@ -47,12 +47,12 @@ interface ApiService {
     ): Observable<WrappedListResponses<TourismEntity>>
 
     // GET
-    @GET("/tourism/categories")
+    @GET("public/tourism/categories")
     fun getListOfTourismCategory(): Observable<WrappedListResponses<TourismCategoryEntity>>
 
     // Add Reservation
     @FormUrlEncoded
-    @POST("/reservation/")
+    @POST("public/reservation")
     fun addReservation(
         @Field("user_id") userId: Int?,
         @Field("name_visitor") nameVisitor: String?,
@@ -65,18 +65,18 @@ interface ApiService {
     ): Observable<WrappedResponse<UserEntity>>
 
     // GET
-    @GET("/reservation/ticket/")
+    @GET("public/reservation/ticket/")
     fun getAllMyTicket(
         @Query("user_id") user_id: Int
     ): Observable<WrappedListResponses<TicketEntity>>
 
     // GET
-    @GET("/reservation/ticketById/")
+    @GET("public/reservation/ticketById/")
     fun getTicketById(
         @Query("ticket_id") ticketId: Int?
     ): Observable<WrappedResponse<TicketEntity>>
 
     // GET
-    @GET("/reservation/scan/")
+    @GET("public/reservation/scan/")
     fun scanQr(): Observable<MessageResponse>
 }
