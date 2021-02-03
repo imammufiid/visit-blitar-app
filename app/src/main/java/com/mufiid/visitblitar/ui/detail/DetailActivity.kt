@@ -20,6 +20,7 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
     private var latitude: String? = null
     private var longitude: String? = null
     private var nameTourism: String? = null
+    private var priceTicket: Int? = 0
 
     companion object {
         const val EXTRAS_WISATA = "extras_wisata"
@@ -56,6 +57,12 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
             nameTourism = it.nameTouristAttraction
             latitude = it.latitude
             longitude = it.longitude
+            priceTicket = it.priceTicket?.toInt()
+
+            // set visibility button reservation
+            if (priceTicket == 0) {
+                binding.buttonReservation.visibility = View.INVISIBLE
+            }
 
         }
     }
