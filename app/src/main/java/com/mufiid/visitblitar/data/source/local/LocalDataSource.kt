@@ -22,8 +22,10 @@ class LocalDataSource private constructor(
     // ticket entity
     fun getAllTicketByUser(userId: Int?): DataSource.Factory<Int, TicketEntity> = mTicketDao.getAllTicketByUser(userId)
     fun getTicketById(ticketId: Int?) : LiveData<TicketEntity> = mTicketDao.getTicketById(ticketId)
+    fun insertTicket(ticket: List<TicketEntity>) = mTicketDao.insertTicket(ticket)
 
     // tourism entity
     fun getAllTourism(): DataSource.Factory<Int, TourismEntity> = mTourismDao.getTourism()
     fun getTourismById(tourismId: Int?): LiveData<TourismEntity> = mTourismDao.getTourismById(tourismId)
+    fun insertTourism(tourism: List<TourismEntity>) = mTourismDao.insertTourism(tourism)
 }
