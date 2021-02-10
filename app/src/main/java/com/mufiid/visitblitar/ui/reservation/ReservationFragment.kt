@@ -1,23 +1,22 @@
 package com.mufiid.visitblitar.ui.reservation
 
-import android.app.ProgressDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mufiid.visitblitar.R
-import com.mufiid.visitblitar.data.source.local.entity.TourismEntity
 import com.mufiid.visitblitar.databinding.FragmentReservationBinding
-import com.mufiid.visitblitar.view.ReservationView
+import com.mufiid.visitblitar.viewmodel.ViewModelFactory
+import com.mufiid.visitblitar.vo.Status
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 
-class ReservationFragment : Fragment(), ReservationView {
+class ReservationFragment : Fragment() {
     private lateinit var binding: FragmentReservationBinding
-    private lateinit var presenter: ReservationPresenter
+    private lateinit var reservationAdapter : ReservationAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,19 +28,49 @@ class ReservationFragment : Fragment(), ReservationView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        init()
-        presenter.getReservation()
         searchingData()
+
+        if (activity != null) {
+            reservationAdapter = ReservationAdapter()
+            viewModelObserver()
+        }
     }
 
-    private fun init() {
-        presenter = ReservationPresenter(this)
+    private fun viewModelObserver() {
+        val factory = ViewModelFactory.getInstance(requireActivity())
+        val viewModel = ViewModelProvider(this, factory)[ReservationViewModel::class.java]
+
+        viewModel.getAllTourism().observe(viewLifecycleOwner, { tourism ->
+            if (tourism != null) {
+                when (tourism.status) {
+                    Status.LOADING -> {
+                        binding.shimmerReservationContainer.startShimmer()
+                        binding.shimmerReservationContainer.visibility = View.VISIBLE
+                    }
+                    Status.SUCCESS -> {
+                        if (tourism.data != null) {
+                            binding.shimmerReservationContainer.stopShimmer()
+                            binding.shimmerReservationContainer.visibility = View.GONE
+                            reservationAdapter.submitList(tourism.data)
+                        }
+                    }
+                    Status.ERROR -> {
+                        showToast(tourism.message)
+                    }
+                }
+            }
+            with(binding.rvWisataReservation) {
+                layoutManager = LinearLayoutManager(context)
+                setHasFixedSize(true)
+                adapter = reservationAdapter
+            }
+        })
     }
 
     private fun searchingData() {
-        binding.svTouristAttraction.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+        binding.svTouristAttraction.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                presenter.getReservation(query)
+
                 binding.svTouristAttraction.clearFocus()
                 return true
             }
@@ -50,37 +79,6 @@ class ReservationFragment : Fragment(), ReservationView {
                 return false
             }
         })
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        CompositeDisposable().clear()
-    }
-
-    override fun onResume() {
-        super.onResume()
-    }
-
-    override fun getDataReservation(message: String?, data: List<TourismEntity>) {
-        binding.rvWisataReservation.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(context)
-            adapter = ReservationAdapter(data)
-        }
-    }
-
-    override fun failedGetDataReservation(message: String?) {
-        showToast(message)
-    }
-
-    override fun loading(state: Boolean) {
-        if (state) {
-            binding.shimmerReservationContainer.startShimmer()
-            binding.shimmerReservationContainer.visibility = View.VISIBLE
-        } else {
-            binding.shimmerReservationContainer.stopShimmer()
-            binding.shimmerReservationContainer.visibility = View.GONE
-        }
     }
 
     private fun showToast(message: String?) {
