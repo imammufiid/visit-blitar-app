@@ -21,10 +21,10 @@ class RemoteDataSource {
             }
     }
 
-    fun getTourism(random: Int? = null): LiveData<ApiResponse<List<TourismEntity>>> {
+    fun getTourism(): LiveData<ApiResponse<List<TourismEntity>>> {
         val result = MutableLiveData<ApiResponse<List<TourismEntity>>>()
         CompositeDisposable().add(
-            ApiConfig.instance().getListOfTouristAttraction(random = random)
+            ApiConfig.instance().getListOfTouristAttraction()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
