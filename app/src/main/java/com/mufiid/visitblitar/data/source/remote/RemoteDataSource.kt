@@ -21,18 +21,20 @@ class RemoteDataSource {
             }
     }
 
-    fun getTourismRandom(random: Int? = null): LiveData<WrappedListResponses<TourismEntity>> {
-        val result = MutableLiveData<WrappedListResponses<TourismEntity>>()
-
+    fun getTourism(random: Int? = null): LiveData<ApiResponse<List<TourismEntity>>> {
+        val result = MutableLiveData<ApiResponse<List<TourismEntity>>>()
         CompositeDisposable().add(
             ApiConfig.instance().getListOfTouristAttraction(random = random)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    result.value = WrappedListResponses(it.message, it.status, it.data)
-
+                    when (it.status) {
+                        200 -> result.value = ApiResponse.success(it.data)
+                        404 -> result.value = ApiResponse.empty(it.message)
+                        else -> result.value = ApiResponse.failed(it.message)
+                    }
                 }, {
-                    result.value = WrappedListResponses(it.message, null, null)
+                    result.value = ApiResponse.error(it.message)
                 })
         )
         return result
