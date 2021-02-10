@@ -11,7 +11,6 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 class RemoteDataSource {
     companion object {
-        private const val SERVICE_LATENCY_IN_MILLIS: Long = 2000
         @Volatile
         private var instance: RemoteDataSource? = null
 
