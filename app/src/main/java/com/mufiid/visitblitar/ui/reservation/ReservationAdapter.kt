@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mufiid.visitblitar.R
@@ -15,7 +17,22 @@ import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
-class ReservationAdapter(val data: List<TourismEntity>): RecyclerView.Adapter<ReservationAdapter.ViewHolder>() {
+class ReservationAdapter: PagedListAdapter<TourismEntity, ReservationAdapter.ViewHolder>(DIFF_CALLBACK) {
+
+    companion object {
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<TourismEntity>() {
+            override fun areItemsTheSame(oldItem: TourismEntity, newItem: TourismEntity): Boolean {
+                return oldItem.id == newItem.id
+            }
+
+            override fun areContentsTheSame(
+                oldItem: TourismEntity,
+                newItem: TourismEntity
+            ): Boolean {
+                return oldItem == newItem
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReservationAdapter.ViewHolder {
         val itemTouristReservationBinding = ItemTouristReservationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,12 +40,9 @@ class ReservationAdapter(val data: List<TourismEntity>): RecyclerView.Adapter<Re
     }
 
     override fun onBindViewHolder(holder: ReservationAdapter.ViewHolder, position: Int) {
-        data[position].let {
-            holder.bind(it)
-        }
+        val tourism = getItem(position)
+        if (tourism != null) holder.bind(tourism)
     }
-
-    override fun getItemCount(): Int = data.size
 
     inner class ViewHolder(private val binding: ItemTouristReservationBinding): RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("StringFormatMatches")
