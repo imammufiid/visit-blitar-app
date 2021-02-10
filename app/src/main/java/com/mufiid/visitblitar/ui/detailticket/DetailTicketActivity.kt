@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.mufiid.visitblitar.ui.detailticket
 
 import android.app.ProgressDialog
@@ -12,6 +14,7 @@ import com.mufiid.visitblitar.databinding.ActivityDetailTicketBinding
 import com.mufiid.visitblitar.utils.pref.UserPref
 import com.mufiid.visitblitar.view.DetailTicketView
 
+@Suppress("DEPRECATION")
 class DetailTicketActivity : AppCompatActivity(), DetailTicketView, View.OnClickListener {
     private lateinit var binding: ActivityDetailTicketBinding
     private lateinit var presenter: DetailTicketPresenter
@@ -65,12 +68,12 @@ class DetailTicketActivity : AppCompatActivity(), DetailTicketView, View.OnClick
 
     override fun loading(state: Boolean) {
         if (state) {
-            loading?.let {
+            loading.let {
                 it.setMessage(getString(R.string.please_wait))
                 it.show()
             }
         } else {
-            loading?.let {
+            loading.let {
                 it.dismiss()
             }
         }
