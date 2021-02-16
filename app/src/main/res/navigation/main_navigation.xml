@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/nav_reservation"
-        android:name="com.mufiid.visitblitar.ui.reservation.ReservationFragment"
+        android:name="com.mufiid.reservation.ui.reservation.ReservationFragment"
         android:label="@string/reservation"
         tools:layout="@layout/fragment_reservation" />
 
