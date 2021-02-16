@@ -14,10 +14,10 @@ interface ApiService {
     // LOGIN
     @FormUrlEncoded
     @POST("public/auth/login")
-    fun login(
+    suspend fun loginUser(
         @Field("username") username: String?,
         @Field("password") password: String?
-    ): Observable<WrappedResponse<UserEntity>>
+    ): WrappedResponse<UserEntity>
 
     // REGISTRATION
     @FormUrlEncoded
@@ -69,6 +69,12 @@ interface ApiService {
     fun getAllMyTicket(
         @Query("user_id") user_id: Int
     ): Observable<WrappedListResponses<TicketEntity>>
+
+    // GET
+    @GET("public/reservation/ticket/")
+    suspend fun getMyTicket(
+        @Query("user_id") user_id: Int
+    ): WrappedListResponses<TicketEntity>
 
     // GET
     @GET("public/reservation/ticketById/")

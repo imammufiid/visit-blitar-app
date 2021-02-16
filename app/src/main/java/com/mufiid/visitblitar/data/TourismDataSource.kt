@@ -10,6 +10,7 @@ import com.mufiid.visitblitar.vo.Resource
 
 interface TourismDataSource {
     fun getAllTourism() : LiveData<Resource<PagedList<TourismEntity>>>
+    suspend fun getAllTicket(userId: Int): LiveData<List<TicketEntity>>
 //    fun recommendedTourism() : LiveData<Resource<PagedList<TourismEntity>>>
 //    fun randomTourism() : LiveData<Resource<PagedList<TourismEntity>>>
 //    fun getAllTicket() : LiveData<Resource<PagedList<TicketEntity>>>

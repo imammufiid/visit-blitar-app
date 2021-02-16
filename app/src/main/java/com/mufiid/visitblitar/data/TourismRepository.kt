@@ -1,6 +1,7 @@
 package com.mufiid.visitblitar.data
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.mufiid.visitblitar.data.source.local.LocalDataSource
@@ -15,11 +16,11 @@ class TourismRepository private constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
-): TourismDataSource {
+) : TourismDataSource {
 
     companion object {
         @Volatile
-        private var instance : TourismRepository? = null
+        private var instance: TourismRepository? = null
 
         fun getInstance(
             remoteDataSource: RemoteDataSource,
@@ -32,7 +33,8 @@ class TourismRepository private constructor(
     }
 
     override fun getAllTourism(): LiveData<Resource<PagedList<TourismEntity>>> {
-        return object : NetworkBoundResource<PagedList<TourismEntity>, List<TourismEntity>>(appExecutors) {
+        return object :
+            NetworkBoundResource<PagedList<TourismEntity>, List<TourismEntity>>(appExecutors) {
             override fun loadFromDB(): LiveData<PagedList<TourismEntity>> {
                 val config = PagedList.Config.Builder()
                     .setEnablePlaceholders(false)
@@ -70,5 +72,37 @@ class TourismRepository private constructor(
                 localDataSource.insertTourism(tourismList)
             }
         }.asLiveData()
+    }
+
+    fun searchTourism(query: String?): LiveData<ApiResponse<List<TourismEntity>>> {
+        return remoteDataSource.searchTourism(query)
+    }
+
+    suspend fun getAllMyTicket(userId: Int) = remoteDataSource.getAllMyTicket(userId)
+
+    override suspend fun getAllTicket(userId: Int): LiveData<List<TicketEntity>> {
+        val ticketResult = MutableLiveData<List<TicketEntity>>()
+        val result = remoteDataSource.getAllMyTicket(userId)
+        val ticketList = ArrayList<TicketEntity>()
+        for (response in result.data!!) {
+            val ticket = TicketEntity(
+                response.id,
+                response.tourismId,
+                response.userId,
+                response.nameTouristAttraction,
+                response.name,
+                response.email,
+                response.nik,
+                response.noTelp,
+                response.codeReservation,
+                response.date,
+                response.totalVisitors,
+                response.statusIsComing,
+                response.imgCodeReservation
+            )
+            ticketList.add(ticket)
+        }
+        ticketResult.postValue(ticketList)
+        return ticketResult
     }
 }
