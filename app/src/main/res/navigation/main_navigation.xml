@@ -3,21 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/nav_home">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/nav_home"
         android:name="com.mufiid.visitblitar.ui.home.HomeFragment"
-        android:label="fragment_home"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home" />
+
     <fragment
-        android:id="@+id/ticketFragment"
+        android:id="@+id/nav_my_ticket"
         android:name="com.mufiid.visitblitar.ui.ticket.TicketFragment"
-        android:label="fragment_ticket"
+        android:label="@string/ticket"
         tools:layout="@layout/fragment_ticket" />
+
     <fragment
-        android:id="@+id/reservationFragment"
+        android:id="@+id/nav_reservation"
         android:name="com.mufiid.visitblitar.ui.reservation.ReservationFragment"
-        android:label="fragment_reservation"
+        android:label="@string/reservation"
         tools:layout="@layout/fragment_reservation" />
+
 </navigation>
