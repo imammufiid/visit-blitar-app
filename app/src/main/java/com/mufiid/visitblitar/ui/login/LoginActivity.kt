@@ -6,19 +6,17 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.mufiid.visitblitar.R
-import com.mufiid.visitblitar.data.source.local.entity.UserEntity
 import com.mufiid.visitblitar.databinding.ActivityLoginBinding
 import com.mufiid.visitblitar.ui.main.MainActivity
 import com.mufiid.visitblitar.ui.registration.RegistrationActivity
 import com.mufiid.visitblitar.utils.pref.AuthPref
 import com.mufiid.visitblitar.utils.pref.UserPref
-import com.mufiid.visitblitar.view.LoginView
-import io.reactivex.rxjava3.disposables.CompositeDisposable
 
-class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
+class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityLoginBinding
-    private var presenter: LoginPresenter? = null
+    private lateinit var viewModel: LoginViewModel
 
     companion object {
         const val CHECK_LOGIN = "check_login"
@@ -41,43 +39,50 @@ class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
     }
 
     private fun init() {
-        CompositeDisposable().clear()
-        presenter = LoginPresenter(this)
+
+        // init view model
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+
+        viewModel.message.observe(this, {
+            if (it.isNotEmpty()) {
+                showMessage(it)
+            }
+        })
+
+        viewModel.user.observe(this, {
+            if (it != null) {
+                showMessage("Berhasil Login")
+                UserPref.setUserData(this, it)
+                AuthPref.setIsLoggedIn(this, true)
+
+                val checkLogin = intent.getBooleanExtra(CHECK_LOGIN, false)
+                if (checkLogin) {
+                    finish()
+                } else {
+                    Handler(mainLooper).postDelayed({
+                        startActivity(Intent(this, MainActivity::class.java))
+                        finish()
+                    }, 1000)
+                }
+            }
+        })
+
+        viewModel.loading.observe(this, {
+            if (it) {
+                binding.layoutButton.visibility = View.GONE
+                binding.progressBarLogin.visibility = View.VISIBLE
+            } else {
+                binding.layoutButton.visibility = View.VISIBLE
+                binding.progressBarLogin.visibility = View.GONE
+            }
+        })
 
         binding.btnLogin.setOnClickListener(this)
         binding.btnRegistration.setOnClickListener(this)
     }
 
-    override fun successLogin(message: String?, user: UserEntity) {
-        UserPref.setUserData(this, user)
-        AuthPref.setIsLoggedIn(this, true)
-        showToast(message)
-
-        val checkLogin = intent.getBooleanExtra(CHECK_LOGIN, false)
-        if (checkLogin) {
-            finish()
-        } else {
-            Handler(mainLooper).postDelayed({
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
-            }, 1000)
-        }
-
-    }
-
-    override fun failedLogin(message: String?) {
-        showToast(message)
-        binding.layoutButton.visibility = View.VISIBLE
-    }
-
-    override fun loading(state: Boolean) {
-        if (state) {
-            binding.layoutButton.visibility = View.GONE
-            binding.progressBarLogin.visibility = View.VISIBLE
-        } else {
-            binding.layoutButton.visibility = View.VISIBLE
-            binding.progressBarLogin.visibility = View.GONE
-        }
+    private fun showMessage(message: String?) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onClick(v: View?) {
@@ -88,7 +93,7 @@ class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
                 if (username == "" || password == "") {
                     showToast("Field harus diisi")
                 } else {
-                    presenter?.login(username, password)
+                    viewModel.loginUser(username, password)
                 }
             }
             R.id.btn_registration -> {
@@ -100,4 +105,5 @@ class LoginActivity : AppCompatActivity(), LoginView, View.OnClickListener {
     private fun showToast(message: String?) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+
 }
