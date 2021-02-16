@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.mufiid.visitblitar.data.TourismRepository
 import com.mufiid.visitblitar.di.Injection
-import com.mufiid.visitblitar.ui.reservation.ReservationViewModel
 import com.mufiid.visitblitar.ui.ticket.TicketViewModel
 
 class ViewModelFactory private constructor(private val mTourismRepository: TourismRepository) :
@@ -22,9 +21,6 @@ class ViewModelFactory private constructor(private val mTourismRepository: Touri
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return when {
-            modelClass.isAssignableFrom(ReservationViewModel::class.java) -> {
-                ReservationViewModel(mTourismRepository) as T
-            }
             modelClass.isAssignableFrom(TicketViewModel::class.java) -> {
                 TicketViewModel(mTourismRepository) as T
             }
