@@ -3,10 +3,11 @@
 package com.mufiid.visitblitar.ui.detailticket
 
 import android.app.ProgressDialog
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.mufiid.visitblitar.R
 import com.mufiid.visitblitar.data.source.local.entity.TicketEntity
@@ -20,9 +21,16 @@ class DetailTicketActivity : AppCompatActivity(), DetailTicketView, View.OnClick
     private lateinit var presenter: DetailTicketPresenter
     private lateinit var loading: ProgressDialog
     private var codeReservation: String? = null
+    private var position = 0
+    private var data: TicketEntity? = null
 
     companion object {
         const val EXTRA_RESERVATION = "extras_reservation"
+        const val EXTRA_POSITION = "extra_position"
+        const val REQUEST_COMING = 100
+        const val RESULT_COMING = 101
+        const val REQUEST_GO_HOME = 200
+        const val RESULT_GO_HOME = 202
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +43,8 @@ class DetailTicketActivity : AppCompatActivity(), DetailTicketView, View.OnClick
     }
 
     private fun getParcelable() {
-        val data = intent.getParcelableExtra<TicketEntity>(EXTRA_RESERVATION)
+        data = intent.getParcelableExtra<TicketEntity>(EXTRA_RESERVATION)
+        position = intent.getIntExtra(EXTRA_POSITION, 0)
         codeReservation = data?.codeReservation
 
         presenter.getTicketById(data?.id)
@@ -64,6 +73,7 @@ class DetailTicketActivity : AppCompatActivity(), DetailTicketView, View.OnClick
 
     override fun message(message: String?) {
         showToast(message)
+        finish()
     }
 
     override fun loading(state: Boolean) {
@@ -84,8 +94,12 @@ class DetailTicketActivity : AppCompatActivity(), DetailTicketView, View.OnClick
     }
 
     override fun onClick(v: View?) {
-        when(v?.id) {
+        when (v?.id) {
             R.id.btn_is_coming -> {
+//                val intent = Intent().apply {
+//                    putExtra(EXTRA_RESERVATION, data)
+//                    putExtra(EXTRA_POSITION, position)
+//                }
                 UserPref.getUserData(this)?.id?.let { userId ->
                     codeReservation?.let { codeReservation ->
                         presenter.isComing(
@@ -93,6 +107,13 @@ class DetailTicketActivity : AppCompatActivity(), DetailTicketView, View.OnClick
                         )
                     }
                 }
+
+//                if (data?.statusIsComing == 0) {
+//                    setResult(RESULT_COMING, intent)
+//                } else if (data?.statusIsComing == 1) {
+//                    setResult(RESULT_GO_HOME, intent)
+//                }
+                finish()
             }
         }
     }
