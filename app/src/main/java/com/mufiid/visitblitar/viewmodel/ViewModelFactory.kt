@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.mufiid.visitblitar.data.TourismRepository
 import com.mufiid.visitblitar.di.Injection
 import com.mufiid.visitblitar.ui.reservation.ReservationViewModel
+import com.mufiid.visitblitar.ui.ticket.TicketViewModel
 
 class ViewModelFactory private constructor(private val mTourismRepository: TourismRepository) :
     ViewModelProvider.NewInstanceFactory() {
@@ -23,6 +24,9 @@ class ViewModelFactory private constructor(private val mTourismRepository: Touri
         return when {
             modelClass.isAssignableFrom(ReservationViewModel::class.java) -> {
                 ReservationViewModel(mTourismRepository) as T
+            }
+            modelClass.isAssignableFrom(TicketViewModel::class.java) -> {
+                TicketViewModel(mTourismRepository) as T
             }
             else -> throw Throwable("Unknown ViewModel Class: ${modelClass.name}")
         }
