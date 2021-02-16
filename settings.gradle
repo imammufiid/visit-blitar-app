@@ -1,3 +1,4 @@
+include ':ticket'
 include ':reservation'
 include ':app'
 rootProject.name = "visitBlitar"
