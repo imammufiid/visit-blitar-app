@@ -34,6 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    dynamicFeatures = [':reservation']
 }
 
 dependencies {
@@ -42,12 +43,11 @@ dependencies {
     implementation "androidx.core:core-ktx:$coreVersion"
 
     // ui
-    implementation "androidx.appcompat:appcompat:$appCompatVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
-    implementation "com.google.android.material:material:$materialVersion"
-    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
+    api "androidx.appcompat:appcompat:$appCompatVersion"
+    api "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    api "com.google.android.material:material:$materialVersion"
+    api "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     implementation "androidx.cardview:cardview:$cardViewVersion"
-    implementation "androidx.legacy:legacy-support-v4:$legacySupportVersion"
 
     // image
     implementation "com.github.bumptech.glide:glide:$glideVersion"
@@ -74,7 +74,16 @@ dependencies {
     implementation "androidx.paging:paging-runtime:$pagingVersion"
 
     // animation
-    implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    api 'com.facebook.shimmer:shimmer:0.5.0'
+
+    // view model and live data
+    api "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+
+    // navigation component
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.3'
 
     // testing
     testImplementation "junit:junit:$junitVersion"
