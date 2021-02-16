@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mufiid.visitblitar.R
 import com.mufiid.visitblitar.data.source.local.entity.TourismEntity
-import com.mufiid.visitblitar.databinding.ItemTouristReservationBinding
+import com.mufiid.reservation.databinding.ItemTouristReservationBinding
 import com.mufiid.visitblitar.ui.addreservation.AddReservationActivity
 import com.mufiid.visitblitar.ui.detail.DetailActivity
 import java.text.DecimalFormat

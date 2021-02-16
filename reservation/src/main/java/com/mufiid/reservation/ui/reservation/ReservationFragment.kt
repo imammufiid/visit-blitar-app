@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.mufiid.visitblitar.databinding.FragmentReservationBinding
+import com.mufiid.reservation.databinding.FragmentReservationBinding
 import com.mufiid.reservation.viewmodel.ViewModelFactory
 import com.mufiid.visitblitar.vo.Status
 
