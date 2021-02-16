@@ -15,7 +15,6 @@ import com.mufiid.visitblitar.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private var doubleBack = false
 
     companion object {
         const val ACTIVITY_NAME = "main_activity"
@@ -32,19 +31,7 @@ class MainActivity : AppCompatActivity() {
     private fun initNavigation() {
         val navController = findNavController(R.id.nav_host_fragment)
         binding.bottomNavigationView.setupWithNavController(navController)
-    }
 
-    override fun onBackPressed() {
-        if (doubleBack) {
-            super.onBackPressed()
-            return
-        }
-
-        doubleBack = true
-        Toast.makeText(this, "Tekan sekali lagi", Toast.LENGTH_SHORT).show()
-        Handler(mainLooper).postDelayed({
-            doubleBack = false
-        }, 2000)
     }
 
     private fun checkPermission() {
